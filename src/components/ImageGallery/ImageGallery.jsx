@@ -42,10 +42,14 @@ export class ImageGallery extends Component {
                 this.setState({
                     error: 'Sorry, there are no images matching your search query. Please try again.'
                 })
+                return
             }
             
 
-            this.setState({ images: [...this.state.images, ...resp.hits] })
+            this.setState({
+                images: [...this.state.images, ...resp.hits],
+                error: null
+            })
             this.setState({hits: resp.totalHits})
             }
             catch (err) {
